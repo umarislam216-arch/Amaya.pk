@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amaya.shop — Mobile Accessories (Mobile-First)</title>
+<style>
+:root {
+  --accent: #0b76ef;
+  --muted: #666;
+  --bg: #fff;
+  --card: #f8f9fb;
+  --shadow: 0 6px 20px rgba(16,24,40,0.08);
+  --radius: 12px;
+  font-family: Arial, sans-serif;
+}
+body {margin:0; background:var(--bg); color:#111;}
+.wrap {padding:10px; max-width:600px; margin:auto;}
+header {display:flex; justify-content:space-between; align-items:center; padding:10px 0;}
+.logo {font-weight:700; font-size:20px; color:var(--accent);}
+.tagline {font-size:12px; color:var(--muted);}
+nav a {text-decoration:none; color:var(--muted); margin-left:10px; font-size:14px;}
+.cta {background:var(--accent); color:#fff; padding:6px 10px; border-radius:8px; text-decoration:none; font-size:14px;}
+.hero img {width:100%; border-radius:var(--radius); margin-top:10px;}
+.grid {display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;}
+.product {background:#fff; padding:8px; border-radius:var(--radius); box-shadow:var(--shadow); display:flex; flex-direction:column;}
+.prod-img {height:100px; display:flex; align-items:center; justify-content:center; background:#f1f5f9; border-radius:var(--radius);}
+.prod-img img {max-width:100%; max-height:100%; object-fit:contain;}
+.prod-title {font-size:12px; font-weight:700; margin-top:6px;}
+.prod-price {font-size:12px; color:var(--accent); margin-top:4px;}
+.prod-actions {display:flex; justify-content:space-between; margin-top:6px;}
+button {font-size:12px; padding:4px 6px; border-radius:8px; border:none; cursor:pointer;}
+.btn-outline {border:1px solid #ddd; background:transparent;}
+footer {margin-top:20px; padding:10px 0; border-top:1px solid #eee; font-size:12px; color:var(--muted); text-align:center;}
+.floating-phone {position:fixed; bottom:10px; right:10px; background:#fff; padding:6px 10px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); display:flex; align-items:center; gap:6px; font-size:12px;}
+.floating-phone img {width:40px; height:40px; border-radius:8px; object-fit:cover;}
+@media (max-width:400px){.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">Amaya.shop</div>
+  <div class="tagline">Mobile Accessories — Fast Delivery</div>
+</header>
+<main>
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1600&auto=format&fit=crop&sat=-20" alt="Mobile Accessories">
+</section>
+<section id="products">
+<div class="grid" id="product-grid"></div>
+</section>
+</main>
+<footer>
+Contact / Orders: +92 300 0023053
+</footer>
+<div class="floating-phone">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1600&auto=format&fit=crop&sat=-10" alt="phone">
+WhatsApp: +92 300 0023053
+</div>
+<script>
+const PRODUCTS=[
+{id:1,title:'Silicone Case',price:12.99,img:'https://images.unsplash.com/photo-1570813740401-c8f6f9285b07?q=80&w=1200&auto=format&fit=crop&sat=-10'},
+{id:2,title:'USB-C Charger',price:19.5,img:'https://images.unsplash.com/photo-1585386959984-a415522c5d28?q=80&w=1200&auto=format&fit=crop&sat=-10'},
+{id:3,title:'Braided Cable',price:6.75,img:'https://images.unsplash.com/photo-1580910051075-5efb6b8a33b1?q=80&w=1200&auto=format&fit=crop&sat=-10'},
+{id:4,title:'Phone Stand',price:15.0,img:'https://images.unsplash.com/photo-1629309093518-03e4a40f0b55?q=80&w=1200&auto=format&fit=crop&sat=-10'}
+];
+const productGrid=document.getElementById('product-grid');
+PRODUCTS.forEach(p=>{
+  const el=document.createElement('div'); el.className='product';
+  el.innerHTML=`<div class="prod-img"><img src="${p.img}" alt="${p.title}"></div><div class="prod-title">${p.title}</div><div class="prod-price">$${p.price}</div><div class="prod-actions"><button class="btn-outline" onclick="alert('View ${p.title}')">View</button><button onclick="alert('Add ${p.title} to cart')">Add</button></div>`;
+  productGrid.appendChild(el);
+});
+</script>
+</body>
+</html>
